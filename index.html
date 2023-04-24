@@ -4,37 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Document</title>
 </head>
 <body>
     <main>
-        <nav>
-            <h1>Weather Dashboard</h1>
+        <nav class="nav">
+            <h1 class="nav-title">Weather Dashboard</h1>
         </nav>
 
-        <section class="left-content">
-            <form>
+        <section class="content left">
+            <form class="search-city">
                 <h2>Search for a City:</h2>
-                <label type="text"></label>
-                <button>Search</button>
+                <input type="text" placeholder="City Name" class="search-input"></input>
+                <button class="search-btn">Search</button>
                 <hr>
             </form>
 
-            <div>
+            <ul>
                 <!--Generate list with javascript of the US cities for consulting the weather-->
-            </div>
+            </ul>
 
         </section>
 
-        <section class="right-content">
-            <div>
-                <!--Show the selected city with temperature wind and humidity-->
+        <section class="content right">
+            <div class="city-box">
+                <h1 id="city"></h1>
+                <p id="temperature"></p>
+                <p id="wind"></p>
+                <p id="humidity"></p>
             </div>
 
-            <ul>
-                <!--Generate li of 5 day forecast-->
-            </ul>
+            <div class="forecast">
+                <h2>5-Day Forecast</h2>
+                <ul id="forecast">
+                    <!--Generate li of 5 day forecast-->
+                </ul>
+            </div>
+            
         </section>
     </main>
     <script src="./assets/js/script.js"></script>
