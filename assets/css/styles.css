@@ -17,7 +17,7 @@
   font-size: 40px;
   float: right;
   margin: 0 30%;
-  padding: 1.2%
+  padding: 1.2%;
 }
 
 .content {
@@ -43,11 +43,18 @@
   margin: 5%;
 }
 
+.search-city h2 {
+  font-size: 28px;
+}
+
 .search-input {
-  width: 100%;
-  
+  width: 95%;
+  height: 5%;
   padding: 8px;
+  margin: 10px 0;
   font-size: 18px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .search-btn {
@@ -60,10 +67,27 @@
   font-size: 18px;
 }
 
+.cities-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #6991E3;
+  border: 5px solid #6991E3;
+  border-radius: 5px;
+  color: white;
+  padding: 8px;
+  font-size: 18px;
+  margin: 10px;
+}
+
 .city-box {
   border: 1px solid black;
   margin: 1%;
   padding: 1%;
+}
+
+.city-box h2 {
+  font-size: 28px;
 }
 
 .forecast {
