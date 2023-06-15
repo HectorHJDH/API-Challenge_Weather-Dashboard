@@ -7,30 +7,43 @@
 </head>
 <body>
   <!--Title of the page-->
-    <h1 class="app-title">Weather Dashboard</h1>
-    
-    <main>
-      <!--Search city area-->
-        <div class="search-area">
-          <h2>Search for a City:</h2>
-            <form>
-              <!--Input field for city name-->
-              <input class="search-input" id="search-city" placeholder="City name">
-              <!--Search city button-->
-              <button class="search-button">Search</button>
-            </form>
-          <!--List of cities searched-->
-          <div class="city-list">
-            <hr>
-            <ul id="city-list"></ul>
-          </div>
-        </div>
-
+  <h1 class="app-title">Weather Dashboard</h1>
+  
+  <main class="container">
+    <!--LEFT AREA - Search city area-->
+    <div class="left-area">
+      <h2>Search for a City:</h2>
+        <form>
+          <!--Input field for city name-->
+          <input class="search-input" id="search-city" placeholder="City name">
+          <!--Search city button-->
+          <button class="search-button">Search</button>
+        </form>
         
-    </main>
+      <!--List of cities searched-->
+      <div class="city-list">
+        <hr>
+        <ul id="city-list"></ul>
+      </div>
+    </div>
 
+    <!--RIGHT AREA - Current weather area-->
+    <div class="right-area">
+      <div class="current-weather">
+        <h3 id="current-city"></h3>
+        <p>Temp: <span class="current" id="temperature"></span></p>
+        <p>Wind: <span class="current" id="wind-speed"></span></p>
+        <p>Humidity: <span class="current" id="humidity"></span></p> 
+      </div>
 
-   <script src="https://code.jquery.com/jquery.js"></script>
-   <script src="./assets/js/script.js"></script>
+      <!--Forecast area-->
+      <div class="forecast-area">
+        <h3>5-Day Forecast:</h3>
+        <div class="forecast-container">
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
