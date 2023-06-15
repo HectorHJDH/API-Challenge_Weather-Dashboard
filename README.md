@@ -6,4 +6,4 @@ Using the weather forecast API we needed to retrieve weather data from cities 5 
 Live page Url: https://hectorhjdh.github.io/API-Challenge_Weather-Dashboard/
 
 Screenshot:
-![](assets\images\Screenshot.PNG?raw=true "Weather Forecast Challenge screenshot")
+![Screenshot](./assets/images/Screenshot.PNG)
