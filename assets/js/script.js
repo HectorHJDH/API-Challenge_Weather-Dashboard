@@ -34,7 +34,7 @@ function renderCityList() {
 renderCityList();
 
 function getApi(cityName) {
-  var queryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`;
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`;
 
   fetch(queryURL)
     .then(function (response) {
