@@ -1,6 +1,37 @@
 var API_KEY = '905c5677ef9598108ef712c3c6f027d0';
 var searchCity = document.getElementById("search-city");
 var searchBtn = document.querySelector(".search-button");
+var cityList = document.getElementById("city-list");
+
+// Load the stored cities from local storage
+var storedCities = JSON.parse(localStorage.getItem("cities")) || [];
+
+// Function to save a city to local storage
+function saveCity(city) {
+  var capitalizedCity = city.toUpperCase();
+  storedCities.push(capitalizedCity);
+  localStorage.setItem("cities", JSON.stringify(storedCities));
+}
+
+// Function to render the list of cities in the city list
+function renderCityList() {
+  cityList.innerHTML = ""; // Clear previous city list
+
+  storedCities.forEach(function (city) {
+    var listItem = document.createElement("li");
+    listItem.textContent = city;
+    listItem.classList.add("city-list-item");
+    cityList.appendChild(listItem);
+
+    // Add click event listener to each city item
+    listItem.addEventListener("click", function () {
+      getApi(city);
+    });
+  });
+}
+
+// Initial render of the city list
+renderCityList();
 
 function getApi(cityName) {
   var queryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`;
@@ -30,23 +61,25 @@ function getApi(cityName) {
       for (var i = 0; i < 5; i++) {
         var forecastCard = document.createElement("div");
         forecastCard.classList.add("forecast-card");
+
         var forecastDate = document.createElement("h4");
         forecastDate.classList.add("forecast-date");
+        var date = new Date(data.list[i].dt_txt);
+        var formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        forecastDate.textContent = formattedDate;
+
         var forecastIcon = document.createElement("img");
         forecastIcon.classList.add("forecast-icon");
+        forecastIcon.src = "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
+
         var forecastTemp = document.createElement("p");
         forecastTemp.innerHTML = "Temp: <span class='forecast'>" + data.list[i].main.temp + "°F</span>";
-        var forecastHumidity = document.createElement("p");
-        forecastHumidity.innerHTML = "Humidity: <span class='forecast'>" + data.list[i].main.humidity + "%</span>";
+
         var forecastWind = document.createElement("p");
         forecastWind.innerHTML = "Wind: <span class='forecast'>" + data.list[i].wind.speed + " MPH</span>";
 
-        // Get the date and format it as "M/D/YYYY"
-        var date = new Date(data.list[i].dt_txt);
-        var formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-
-        forecastDate.textContent = formattedDate;
-        forecastIcon.src = "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
+        var forecastHumidity = document.createElement("p");
+        forecastHumidity.innerHTML = "Humidity: <span class='forecast'>" + data.list[i].main.humidity + "%</span>";
 
         forecastCard.appendChild(forecastDate);
         forecastCard.appendChild(forecastIcon);
@@ -66,6 +99,17 @@ searchBtn.addEventListener("click", function (e) {
   e.preventDefault();
   var cityName = searchCity.value.trim(); // Get the entered city name and remove leading/trailing whitespace
   if (cityName) {
+    // Check if the city already exists in the stored cities
+    var cityExists = storedCities.some(function (city) {
+      return city.toLowerCase() === cityName.toLowerCase();
+    });
+
+    if (!cityExists) {
+      saveCity(cityName); // Save the searched city to local storage
+      renderCityList(); // Re-render the city list
+    }
+
     getApi(cityName);
+    searchCity.value = ""; // Clear the search input
   }
 });

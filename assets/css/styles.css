@@ -100,6 +100,8 @@ hr {
   background-color: rgb(34, 53, 86);
   color: white;
   padding: 20px 50px 20px 20px;
+  min-width: 8vw;
+  min-height: 240px;
 }
 
 .forecast-card img {
@@ -124,4 +126,33 @@ hr {
   font-size: 30px;
   font-weight: bold;
   padding: 5px;
+}
+
+.city-list {
+  margin-top: 20px;
+}
+
+.city-list hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.city-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.city-list li {
+  cursor: pointer;
+  padding: 13px;
+  border-radius: 5px;
+  background-color: #d0d0d0;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.city-list li:hover {
+  background-color: #e0e0e0;
 }
